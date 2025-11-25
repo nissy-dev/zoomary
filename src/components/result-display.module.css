@@ -1,0 +1,132 @@
+.container {
+  margin-top: 32px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 16px;
+}
+
+.tab {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s;
+  margin-bottom: -2px;
+}
+
+.tab:hover {
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+.tab-active {
+  color: #0066cc;
+  border-bottom-color: #0066cc;
+}
+
+.content {
+  padding: 16px;
+  background-color: #fafafa;
+  border-radius: 4px;
+  min-height: 200px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 16px;
+}
+
+.result {
+  padding: 16px;
+  background-color: white;
+  border-radius: 4px;
+  min-height: 150px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.result h1,
+.result h2,
+.result h3,
+.result h4,
+.result h5,
+.result h6 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.result h1:first-child,
+.result h2:first-child,
+.result h3:first-child,
+.result h4:first-child,
+.result h5:first-child,
+.result h6:first-child {
+  margin-top: 0;
+}
+
+.result p {
+  margin-bottom: 1em;
+}
+
+.result ul,
+.result ol {
+  margin-bottom: 1em;
+  padding-left: 2em;
+}
+
+.result code {
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.result pre {
+  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+.result pre code {
+  background: none;
+  padding: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #0052a3;
+}
+
+.button:active {
+  background-color: #003d7a;
+}
