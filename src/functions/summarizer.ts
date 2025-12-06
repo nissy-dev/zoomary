@@ -46,7 +46,7 @@ export function useSummarizer() {
           summarizer.destroy();
         }
 
-        onChunk("\n## 全体の要約\n");
+        onChunk("\n\n");
 
         summarizer = await Summarizer.create({
           ...options,

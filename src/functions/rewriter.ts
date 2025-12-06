@@ -7,6 +7,7 @@ export function useRewriter() {
   const [availability, setAvailability] = useState<Availability | null>(
     initialAvailability
   );
+
   useEffect(() => {
     if (!isRewriterDefined) return;
     Rewriter.availability().then((availability) => {
