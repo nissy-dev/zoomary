@@ -2,18 +2,17 @@ import { useState, useEffect, useCallback } from "react";
 import { splitTextIfNeeded } from "./text-splitter";
 
 export function useRewriter() {
-  const [availability, setAvailability] = useState<Availability | null>(null);
-
+  const isRewriterDefined = "Rewriter" in window;
+  const initialAvailability = isRewriterDefined ? null : "unavailable";
+  const [availability, setAvailability] = useState<Availability | null>(
+    initialAvailability
+  );
   useEffect(() => {
-    const checkAvailability = async () => {
-      try {
-        setAvailability(await Rewriter.availability());
-      } catch (_) {
-        setAvailability("unavailable");
-      }
-    };
-    checkAvailability();
-  }, []);
+    if (!isRewriterDefined) return;
+    Rewriter.availability().then((availability) => {
+      setAvailability(availability);
+    });
+  }, [isRewriterDefined]);
 
   const rewriteStreaming = useCallback(
     async (text: string, context: string, onChunk: (chunk: string) => void) => {

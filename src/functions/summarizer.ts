@@ -2,18 +2,18 @@ import { useState, useEffect, useCallback } from "react";
 import { splitTextIfNeeded } from "./text-splitter";
 
 export function useSummarizer() {
-  const [availability, setAvailability] = useState<Availability | null>(null);
+  const isSummarizerDefined = "Summarizer" in window;
+  const initialAvailability = isSummarizerDefined ? null : "unavailable";
+  const [availability, setAvailability] = useState<Availability | null>(
+    initialAvailability
+  );
 
   useEffect(() => {
-    const checkAvailability = async () => {
-      try {
-        setAvailability(await Summarizer.availability());
-      } catch (_) {
-        setAvailability("unavailable");
-      }
-    };
-    checkAvailability();
-  }, []);
+    if (!isSummarizerDefined) return;
+    Summarizer.availability().then((availability) => {
+      setAvailability(availability);
+    });
+  }, [isSummarizerDefined]);
 
   const summarizeStreaming = useCallback(
     async (text: string, context: string, onChunk: (chunk: string) => void) => {

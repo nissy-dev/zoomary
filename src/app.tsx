@@ -61,7 +61,7 @@ function App() {
           setSummaryText((text) => text + chunk)
         ),
       ]);
-    } catch (error) {
+    } catch (_) {
       setFileError("ファイル処理中にエラーが発生しました");
     } finally {
       setIsProcessing(false);
