@@ -38,6 +38,8 @@ export function useRewriter() {
         for (let i = 0; i < chunks.length; i++) {
           const chunk = chunks[i];
           rewriter = await Rewriter.create(options);
+          // "NotSupportedError: The model attempted to output text with low quality, and was prevented from doing so." のエラーが起きる
+          // https://issues.chromium.org/issues/415205687
           const stream = rewriter.rewriteStreaming(chunk, { context });
           for await (const streamChunk of stream) {
             onChunk(streamChunk);
